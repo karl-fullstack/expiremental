@@ -32,6 +32,10 @@ let routes = [
     {
         path: "/test_case",
         component: require("./components/TestCase.vue").default
+    },
+    {
+        path: "/create_a_will",
+        component: require("./components/CreateAWill/Index.vue").default
     }
 ];
 const router = new VueRouter({
