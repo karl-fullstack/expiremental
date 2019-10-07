@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card p-5">
-                    <b-form @submit="createTask">
+                    <!-- <b-form @submit="createTask">
                         <b-form-group
                             id="input-group-1"
                             label="Title:"
@@ -20,24 +20,12 @@
                         </b-form-group>
                         <b-button variant="primary" type="submit">Submit</b-button>
                     </b-form>
-                    <br>
+                    <br> -->
                     <b-button variant="primary" @click="createTaskModal(), editmode=false">Create Task</b-button>
                 </div>
-                <div class="card mt-5">   
-                    <b-table striped hover :items="task" :fields="fields">
-                        <template v-slot:cell(priority_rate)="data">
-                          <div v-if="data.item.priority_rate==0"> <b-badge variant="secondary">Not Important</b-badge></div>
-                          <div v-else-if="data.item.priority_rate==1"> <b-badge variant="primary">Important</b-badge></div>
-                          <div v-else-if="data.item.priority_rate==2"> <b-badge variant="danger">ASAP</b-badge></div>
-                          <div v-else></div>
-                        </template>
-                        <template v-slot:cell(action)="data">
-                            <b-button variant="primary" v-b-modal.task_modal @click="loadSpecificTask(data.item), editmode=true"><i class="fas fa-edit"></i></b-button>
-                            <b-button variant="danger" @click="deleteTask(data.item.id)">Delete</b-button>
-                        </template>
-                    </b-table>
+                
+                <TaskList :task="task" @load-task="loadSpecificTask" />
 
-                </div>
             </div>
         </div>
 
@@ -75,22 +63,20 @@
 <script>
     import Swal from "sweetalert2";
     import Form from "vform";
+    import TaskList from "./TaskList";
+
     export default {
+        name: "task",
+        components: {
+          TaskList,
+        },
         data(){
             return{
                 //checks if the form is in edit mode.
-                editmode: true,
+                editmode: false,
                 
                 // This is the array that will hold the list of task
                 task: [],
-
-                // This is the fields for the table
-                fields: [ 
-                    {key:"title", sortable: true},
-                    {key:'status', sortable: true},
-                    {key:'priority_rate', sortable: true},
-                    {key:'action'},
-                ],
 
                 // Variable that will hold the form model
                 form: new Form ({
@@ -116,6 +102,7 @@
             },
             loadSpecificTask(task){
                 this.form.fill(task);
+                this.editmode = true;
             },
             createTask(){
                 this.form.post('/api/tasks')
@@ -143,11 +130,6 @@
                       })
                       // this.$swal('Your Task has been updated!'),
                     ).catch();
-            },
-            deleteTask(id){
-                this.form.delete('/api/tasks/'+id)
-                    .then(Fire.$emit('AfterCreate'))
-                    .catch();
             },
             createTaskModal(){
               this.$bvModal.show('task_modal'),

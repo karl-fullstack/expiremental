@@ -27,7 +27,7 @@ let routes = [
     },
     {
         path: "/task",
-        component: require("./components/Task.vue").default
+        component: require("./components/Task/Task.vue").default
     },
     {
         path: "/test_case",
@@ -36,6 +36,15 @@ let routes = [
     {
         path: "/create_a_will",
         component: require("./components/CreateAWill/Index.vue").default
+    },
+    {
+        path: "/loan",
+        component: require("./components/LoanMonitoring/Index.vue").default
+    },
+    {
+        path: "/employee_table",
+        component: require("./components/LoanMonitoring/Employees/EmployeeTable.vue")
+            .default
     }
 ];
 const router = new VueRouter({
@@ -50,6 +59,8 @@ window.Fire = new Vue();
 import VueSweetalert2 from "vue-sweetalert2";
 
 Vue.use(VueSweetalert2);
+
+Vue.use(require("vue-moment"));
 
 /**
  * The following block of code may be used to automatically register your

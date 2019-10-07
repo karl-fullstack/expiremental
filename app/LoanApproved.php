@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class LoanApproved extends Model
 {
     protected $fillable = [
-        'title',
+        'loan_request_id',
+        'release_date',
+        'maturity_date',
         'status',
-        'priority_rate'
     ];
 }

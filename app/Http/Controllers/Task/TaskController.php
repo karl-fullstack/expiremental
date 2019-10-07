@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Task;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Task;
-use App\Events\TaskCreated;
-use App\Events\TaskRemoved;
+use App\Http\Controllers\Controller;
+// use App\Events\TaskCreated;
+// use App\Events\TaskRemoved;
 
 class TaskController extends Controller
 {
