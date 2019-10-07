@@ -83,7 +83,7 @@
                         <router-link to="/test_case">Test Case</router-link>
                     </li>
                     <li class="breadcrumb-item">
-                        <router-link to="/create_a_will">Will</router-link>
+                        <router-link to="/loan">Loan Monitoring</router-link>
                     </li>
                 </ol>
             </nav>

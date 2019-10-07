@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class PayAccount extends Model
 {
     protected $fillable = [
-        'title',
-        'status',
-        'priority_rate'
+        'employee_id',
+        'max_amount',
+        'balance',
     ];
 }
