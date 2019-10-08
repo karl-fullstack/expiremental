@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Loan;
 
 use App\Payroll;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class PayrollController extends Controller
 {
@@ -14,7 +16,14 @@ class PayrollController extends Controller
      */
     public function index()
     {
-        //
+
+        $payroll = DB::table('employees')
+            ->join('payrolls', 'payrolls.employee_id', 'employees.id')
+            ->select('payrolls.*', 'employees.first_name', 'employees.last_name')
+            ->get();
+
+        return $payroll;
+            
     }
 
     /**

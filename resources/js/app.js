@@ -12,6 +12,8 @@ import Vue from "vue";
 import BootstrapVue from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import VueCurrencyFilter from "vue-currency-filter";
+
 Vue.use(BootstrapVue);
 
 /*
@@ -45,6 +47,16 @@ let routes = [
         path: "/employee_table",
         component: require("./components/LoanMonitoring/Employees/EmployeeTable.vue")
             .default
+    },
+    {
+        path: "/payroll",
+        component: require("./components/LoanMonitoring/Payroll/Index.vue")
+            .default
+    },
+    {
+        path: "/loan_approved",
+        component: require("./components/LoanMonitoring/LoanApproved/ApprovedList.vue")
+            .default
     }
 ];
 const router = new VueRouter({
@@ -60,7 +72,17 @@ import VueSweetalert2 from "vue-sweetalert2";
 
 Vue.use(VueSweetalert2);
 
+//Vue Moment.js
 Vue.use(require("vue-moment"));
+
+Vue.use(VueCurrencyFilter, {
+    symbol: "P",
+    thousandsSeparator: ",",
+    fractionCount: 2,
+    fractionSeparator: ".",
+    symbolPosition: "front",
+    symbolSpacing: true
+});
 
 /**
  * The following block of code may be used to automatically register your

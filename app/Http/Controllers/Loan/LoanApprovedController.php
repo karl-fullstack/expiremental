@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Loan;
 
 use App\LoanApproved;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class LoanApprovedController extends Controller
 {
@@ -14,7 +16,8 @@ class LoanApprovedController extends Controller
      */
     public function index()
     {
-        //
+        return DB::table('loan_approveds')
+            ->get();
     }
 
     /**
