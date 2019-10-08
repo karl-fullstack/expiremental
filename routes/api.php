@@ -21,4 +21,6 @@ Route::resource('tasks', 'Task\TaskController');
 Route::resource('test_case', 'TestCase\TestCaseController');
 Route::resource('employees', 'Loan\EmployeesController');
 Route::resource('loan_request', 'Loan\LoanRequestController');
-Route::resource('pay_account', 'Loan\PayAccountController');
+Route::resource('loan_approved', 'Loan\LoanApprovedController');
+Route::resource('payroll', 'Loan\PayrollController');
+Route::resource('payroll_generator', 'Loan\PayrollGenerator');

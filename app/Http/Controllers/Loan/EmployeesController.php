@@ -16,7 +16,12 @@ class EmployeesController extends Controller
      */
     public function index()
     {
-        return Employees::get();
+        $employees = DB::table('employees')
+        ->join('job_infos', 'job_infos.employee_id', 'employees.id')
+        ->select('employees.*', 'job_infos.job_title', 'job_infos.salary', 'job_infos.employment_date')
+        ->get();
+
+        return $employees;
     }
 
     /**

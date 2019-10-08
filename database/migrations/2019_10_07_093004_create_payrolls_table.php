@@ -16,18 +16,19 @@ class CreatePayrollsTable extends Migration
         Schema::create('payrolls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('basic_pay');
-            $table->string('sss');
-            $table->string('philhealth');
-            $table->string('pagibig');
-            $table->string('tax');
-            $table->string('overtime_hours');
-            $table->string('overtime_pay');
-            $table->string('absence_late_hours');
-            $table->string('absence_late');
-            $table->string('incentives');
-            $table->string('deductions');
-            $table->string('netpay');
+            $table->integer('employee_id');
+            $table->float('basic_pay');
+            $table->float('sss');
+            $table->float('philhealth');
+            $table->float('pagibig');
+            $table->float('tax');
+            $table->float('overtime_hours');
+            $table->float('overtime_pay');
+            $table->float('absence_late_hours');
+            $table->float('absence_late');
+            $table->float('incentives');
+            $table->float('deductions');
+            $table->float('netpay');
         });
     }
 
